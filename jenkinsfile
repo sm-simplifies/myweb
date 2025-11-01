@@ -41,7 +41,7 @@ pipeline {
         stage('Update Deployment File') {
             steps {
                 sh """
-                  sed -i 's|${DOCKER_HUB_USER}/${IMAGE_NAME}:.*|${DOCKER_HUB_USER}/${IMAGE_NAME}:v$BUILD_NUMBER|g' deployments.yml
+                  sed -i 's|${DOCKER_HUB_USER}/${IMAGE_NAME}:.*|${DOCKER_HUB_USER}/${IMAGE_NAME}:v$BUILD_NUMBER|g' deployments.yaml
                 """
             }
         }
