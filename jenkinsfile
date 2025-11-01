@@ -46,24 +46,9 @@ pipeline {
             }
         }
 
-        stage('Setup Kubeconfig') {     
-            steps {
-                 withCredentials([[
-                    $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'aws-creds'
-                ]]) {
-                sh """
-                    aws eks update-kubeconfig --name sm-eks --region eu-north-1
-                    kubectl get nodes
-                """
-                }
-            }        
-        }
-
         stage('Kubernetes Deployment') {
             steps {
                 sh """
-                  export KUBECONFIG=\$HOME/.kube/config
                   kubectl apply -f deployments.yaml
                   kubectl expose deployment mywebdeployment --port=8087 --type=NodePort || true
                 """
