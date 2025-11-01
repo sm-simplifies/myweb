@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: myweb
-        image: smicx20/myweb-image
+        image: smicx20/myweb-image:v
         ports:
         - containerPort: 8087
 ---
