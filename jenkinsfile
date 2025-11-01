@@ -49,7 +49,7 @@ pipeline {
         stage('Kubernetes Deployment') {
             steps {
                 sh """
-                  kubectl apply -f deployments.yml
+                  kubectl apply -f deployments.yaml
                   kubectl expose deployment mywebdeployment --port=8080 --type=NodePort || true
                 """
             }
