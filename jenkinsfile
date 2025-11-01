@@ -56,7 +56,8 @@ pipeline {
                     aws eks update-kubeconfig --name sm-eks --region eu-north-1
                     kubectl get nodes
                 """
-            }
+                }
+            }        
         }
 
         stage('Kubernetes Deployment') {
