@@ -1,0 +1,174 @@
+# create a new deployment 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-deployment
+spec:
+  replicas: 3     
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-app-container
+        image: my-app-image:latest
+        ports:
+        - containerPort: 8087 
+        env:
+        - name: ENVIRONMENT
+          value: "production"
+        - name: LOG_LEVEL
+          value: "info"
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8087      
+          initialDelaySeconds: 15
+          periodSeconds: 20
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8087
+          initialDelaySeconds: 5
+          periodSeconds: 10   
+        volumeMounts:
+        - name: config-volume
+          mountPath: /etc/my-app/config
+      volumes:
+      - name: config-volume
+        configMap:
+          name: my-app-config   
+---
+# create a service to expose the deployment
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-app-service
+spec:
+  selector:
+    app: my-app
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8087
+  type: LoadBalancer      
+---
+# create a new deployment for a prometheus exporter
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-exporter-deployment
+spec:
+  replicas: 1     
+  selector:
+    matchLabels:
+      app: my-app-exporter
+  template:
+    metadata:
+      labels:
+        app: my-app-exporter
+    spec:
+      containers:
+      - name: my-app-exporter-container     
+        image: my-app-exporter-image:latest
+        ports:
+        - containerPort: 9100 
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "200m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 9100
+          initialDelaySeconds: 15
+          periodSeconds: 20
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 9100
+          initialDelaySeconds: 5
+          periodSeconds: 10   
+---
+# create a service to expose the exporter deployment
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-app-exporter-service
+spec:
+  selector:
+    app: my-app-exporter
+  ports:
+  - protocol: TCP
+    port: 9100
+    targetPort: 9100
+  type: ClusterIP
+---
+# create a new deployment for grafana
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grafana-deployment
+spec:
+  replicas: 1     
+  selector:
+    matchLabels:
+      app: grafana
+  template:
+    metadata:
+      labels:
+        app: grafana
+    spec: 
+      containers:
+      - name: grafana-container     
+        image: grafana/grafana:latest
+        ports:
+        - containerPort: 3000 
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "200m"
+          limits:
+            memory: "512Mi"
+            cpu: "400m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 15
+          periodSeconds: 20
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 10       
+---
+# create a service to expose the grafana deployment
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana-service
+spec:
+  selector:
+    app: grafana
+  ports:
+  - protocol: TCP   
+    port: 3000
+    targetPort: 3000
+  type: LoadBalancer  
+---

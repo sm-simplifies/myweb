@@ -6,7 +6,7 @@ pool:
 
 variables:
   MAVEN_VERSION: '3.9.11'
-  DOCKER_HUB_USER: 'mayrhatte09'
+  DOCKER_HUB_USER: 'smicx20'
   IMAGE_NAME: 'myimage'
 
 stages:

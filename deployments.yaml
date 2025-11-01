@@ -1,4 +1,3 @@
-
 # 1. My Web App Deployment
 apiVersion: apps/v1
 kind: Deployment
@@ -18,9 +17,9 @@ spec:
     spec:
       containers:
       - name: myweb
-        image: mayrhatte09/myimage_2
+        image: smicx20/myweb-image
         ports:
-        - containerPort: 8289
+        - containerPort: 8087
 ---
 apiVersion: v1
 kind: Service
@@ -30,13 +29,12 @@ spec:
   selector:
     app: myweb
   ports:
-    - port: 8289
-      targetPort: 8289
+    - port: 8087
+      targetPort: 8087
   type: NodePort
+---
 
 # 2. Prometheus Deployment
-
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -70,9 +68,9 @@ spec:
     - port: 9090
       targetPort: 9090
   type: NodePort
+---
 
 # 3. Grafana Deployment
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -106,3 +104,4 @@ spec:
     - port: 3000
       targetPort: 3000
   type: NodePort
+---
