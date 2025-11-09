@@ -10,7 +10,7 @@ This project demonstrates a **DevOps pipeline** integrating **Jenkins**, **Docke
 ---
 
 ## 📚 Table of Contents
-1. [Overview](## 🧭 Overview)
+1. [Overview](#Overview)
 2. [Prerequisites](#prerequisites)
 3. [Prepare AWS & IAM](#1-prepare-aws--iam)
 4. [Launch EC2 for Jenkins](#2-launch-ec2-for-jenkins)
@@ -27,7 +27,7 @@ This project demonstrates a **DevOps pipeline** integrating **Jenkins**, **Docke
 
 ---
 
-## 🧭 Overview
+## Overview
 - 🔁 **Jenkins** automates: Code → Build → Dockerize → Push → Deploy.
 - 🐳 **Docker Hub** hosts the built image (`mayrhatte09/myimage`).
 - ☸️ **AWS EKS** runs the application in Kubernetes pods.
@@ -273,5 +273,6 @@ COPY target/myweb*.war /usr/local/tomcat/webapps/myweb.war
 ## 👨‍💻 Author
 **Swapnil Mali** — AWS & DevOps Engineer  
 💡 *"Knowledge should spread!"* 💪
+
 
 
