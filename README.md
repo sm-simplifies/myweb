@@ -1,4 +1,4 @@
-# 🚀 AWS EKS + Jenkins CI/CD — Project Synopsis
+# 🚀 AWS EKS + Jenkins CI/CD — Project Workflow Document
 
 > **Repository:** [myweb](https://github.com/sm-simplifies/myweb.git)
 
@@ -273,6 +273,7 @@ COPY target/myweb*.war /usr/local/tomcat/webapps/myweb.war
 ## 👨‍💻 Author
 **Swapnil Mali** — AWS & DevOps Engineer  
 💡 *"Knowledge should spread!"* 💪
+
 
 
 
