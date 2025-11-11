@@ -163,11 +163,7 @@ Important Jenkins credential IDs used in the Jenkinsfile must match those create
    kubectl get pods -o wide
    kubectl get svc
    ```
-4. Access app:
-   ```bash
-   kubectl port-forward svc/myweb-service 8080:8080
-   ```
-   🌍 Open: [http://<PublicIP>:8080](http://<PublicIP>:8080)
+4. 🌐 Access app: `http://<Workernode_EC2_PUBLIC_IP>:NodePort_Number`
 
 ---
 
@@ -201,5 +197,6 @@ Important Jenkins credential IDs used in the Jenkinsfile must match those create
 ---
 
 [TOP](#top)
+
 
 
