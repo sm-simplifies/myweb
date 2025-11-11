@@ -16,14 +16,12 @@ This project demonstrates a **DevOps pipeline** integrating **Jenkins**, **Docke
 5. [Launch EC2 for Jenkins](#2-launch-ec2-for-jenkins)
 6. [Install Required Software](#3-install-required-software)
 7. [Configure Jenkins](#4-configure-jenkins)
-8. [Build Docker Image](#5-build-docker-image)
-9. [Create IAM Roles for EKS](#6-create-iam-roles-for-eks)
-10. [Create EKS Cluster](#7-create-eks-cluster)
-11. [Deploy to Kubernetes](#8-deploy-to-kubernetes)
-12. [Pipeline Explanation](#9-jenkins-pipeline-explanation)
-13. [Verify Deployment](#10-verify-deployment)
-14. [Troubleshooting](#11-troubleshooting)
-15. [Appendix: Files](#appendix-files)
+8. [Create IAM Roles for EKS](#6-create-iam-roles-for-eks)
+9. [Create EKS Cluster](#7-create-eks-cluster)
+10. [Jenkins Pipeline Explanation](#9-jenkins-pipeline-explanation)
+11. [Run & Verify Deployment](#10-verify-deployment)
+12. [Troubleshooting](#11-troubleshooting)
+13. [Appendix: Files](#appendix-files)
 
 ---
 
@@ -199,13 +197,16 @@ Important Jenkins credential IDs used in the Jenkinsfile must match those create
 
 ### [deployments.yaml](https://github.com/sm-simplifies/myweb/blob/769f01e33e9ccb480add79c2e53623c73c4f3c67/deployments.yaml)
 
-### [Dockerfile](https://github.com/sm-simplifies/myweb/blob/d599e1ec9bb6a1248017a6e0b379b98a8b690fcc/dockerfile)
+### [dockerfile](https://github.com/sm-simplifies/myweb/blob/d599e1ec9bb6a1248017a6e0b379b98a8b690fcc/dockerfile)
+
+### [jenkinsfile](https://github.com/sm-simplifies/myweb/blob/abfff0a0b5145fdd37d6211759c0496b228d84cc/jenkinsfile)
 
 ---
 
 ## 👨‍💻 Author
 **Swapnil Mali** — AWS & DevOps Engineer  
 💡 *"Knowledge should spread!"* 💪
+
 
 
 
