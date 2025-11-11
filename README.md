@@ -1,10 +1,10 @@
+<a id="top"></a>
 # 🚀 AWS EKS + Jenkins CI/CD — Project Workflow Execution.
 
 > **Repository:** [myweb](https://github.com/sm-simplifies/myweb.git)
 
 ---
 
-<a id="top"></a>
 ## 🧩 About the Project
 This project demonstrates a **DevOps pipeline** integrating **Jenkins**, **Docker**, and **AWS EKS (Kubernetes)** to achieve **Continuous Integration and Continuous Deployment (CI/CD)** for a Java web application. The application is containerized using **Tomcat**, monitored with **Prometheus** and **Grafana**, and automatically deployed to **EKS** using a Jenkins pipeline.
 
@@ -201,4 +201,5 @@ Important Jenkins credential IDs used in the Jenkinsfile must match those create
 ---
 
 [TOP](#top)
+
 
