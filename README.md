@@ -13,29 +13,18 @@ This project demonstrates a **DevOps pipeline** integrating **Jenkins**, **Docke
 ## 📚 Table of Contents
 1. [Overview](#overview)
 2. [Prerequisites](#prerequisites)
-4. [Prepare AWS & IAM](#prepare-aws--iam)
-5. [Launch EC2 for Jenkins](#launch-ec2-for-jenkins)
-6. [Install Required Software](#install-required-software)
-7. [Configure Jenkins](#configure-jenkins)
-8. [Create IAM Roles for EKS](#create-iam-roles-for-eks)
-9. [Create EKS Cluster](#create-eks-cluster)
-10. [Jenkins Pipeline Explanation](#jenkins-pipeline-explanation)
-11. [Run & Verify Deployment](#verify-deployment)
-12. [Troubleshooting](#troubleshooting)
-13. [Appendix: Files](#appendix-files)
+3. [Prepare AWS and IAM](#prepare-aws-and-iam)
+4. [Launch EC2 for Jenkins](#launch-ec2-for-jenkins)
+5. [Install Required Software](#install-required-software)
+6. [Configure Jenkins](#configure-jenkins)
+7. [Create IAM Roles for EKS](#create-iam-roles-for-eks)
+8. [Create EKS Cluster](#create-eks-cluster)
+9. [Jenkins Pipeline Explanation](#jenkins-pipeline-explanation)
+10. [Run & Verify Deployment](#verify-deployment)
+11. [Troubleshooting](#troubleshooting)
+12. [Appendix: Files](#appendix-files)
 
 ---
-<a id="prepare-aws--iam"></a>
-<a id="launch-ec2-for-jenkins"></a>
-<a id="install-required-software"></a>
-<a id="configure-jenkins"></a>
-<a id="create-iam-roles-for-eks"></a>
-<a id="create-eks-cluster"></a>
-<a id="jenkins-pipeline-explanation"></a>
-<a id="verify-deployment"></a>
-<a id="troubleshooting"></a>
-<a id="appendix-files"></a>
-
 
 <a id="overview"></a>
 ## 🧭 Overview
@@ -55,8 +44,8 @@ This project demonstrates a **DevOps pipeline** integrating **Jenkins**, **Docke
 
 ---
 
-<a id="prepare-aws--iam"></a>
-## 🧱 1. Prepare AWS & IAM
+<a id="prepare-aws-and-iam"></a>
+## 🧱 1. Prepare AWS and IAM
 1. Go to **AWS Console → IAM**.
 2. Create an **IAM User** with *programmatic access*.
 3. Save **Access Key ID** and **Secret Key**.
@@ -64,7 +53,6 @@ This project demonstrates a **DevOps pipeline** integrating **Jenkins**, **Docke
 5. These credentials will later be used for Jenkins configuration.
 
 ---
-
 
 <a id="launch-ec2-for-jenkins"></a>
 ## ☁️ 2. Launch EC2 for Jenkins
@@ -78,7 +66,6 @@ This project demonstrates a **DevOps pipeline** integrating **Jenkins**, **Docke
 🔑 Create or select an SSH key pair for EC2 access.
 
 ---
-
 
 <a id="install-required-software"></a>
 ## 🧰 3. Install Required Software
@@ -214,3 +201,4 @@ Important Jenkins credential IDs used in the Jenkinsfile must match those create
 ---
 
 [TOP](#top)
+
