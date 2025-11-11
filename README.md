@@ -1,4 +1,4 @@
-# 🚀 AWS EKS + Jenkins CI/CD — Project Workflow
+# 🚀 AWS EKS + Jenkins CI/CD — Project Workflow Execution.
 
 > **Repository:** [myweb](https://github.com/sm-simplifies/myweb.git)
 
@@ -12,24 +12,24 @@ This project demonstrates a **DevOps pipeline** integrating **Jenkins**, **Docke
 ## 📚 Table of Contents
 1. [Overview](#Overview)
 2. [Prerequisites](#prerequisites)
-3. [Prepare AWS & IAM](#1-prepare-aws--iam)
-4. [Launch EC2 for Jenkins](#2-launch-ec2-for-jenkins)
-5. [Install Required Software](#3-install-required-software)
-6. [Configure Jenkins](#4-configure-jenkins)
-7. [Build Docker Image](#5-build-docker-image)
-8. [Create IAM Roles for EKS](#6-create-iam-roles-for-eks)
-9. [Create EKS Cluster](#7-create-eks-cluster)
-10. [Deploy to Kubernetes](#8-deploy-to-kubernetes)
-11. [Pipeline Explanation](#9-jenkins-pipeline-explanation)
-12. [Verify Deployment](#10-verify-deployment)
-13. [Troubleshooting](#11-troubleshooting)
-14. [Appendix: Files](#appendix-files)
+4. [Prepare AWS & IAM](#1-prepare-aws--iam)
+5. [Launch EC2 for Jenkins](#2-launch-ec2-for-jenkins)
+6. [Install Required Software](#3-install-required-software)
+7. [Configure Jenkins](#4-configure-jenkins)
+8. [Build Docker Image](#5-build-docker-image)
+9. [Create IAM Roles for EKS](#6-create-iam-roles-for-eks)
+10. [Create EKS Cluster](#7-create-eks-cluster)
+11. [Deploy to Kubernetes](#8-deploy-to-kubernetes)
+12. [Pipeline Explanation](#9-jenkins-pipeline-explanation)
+13. [Verify Deployment](#10-verify-deployment)
+14. [Troubleshooting](#11-troubleshooting)
+15. [Appendix: Files](#appendix-files)
 
 ---
 
 ## 🧭 Overview
 - 🔁 **Jenkins** automates: Code → Build → Dockerize → Push → Deploy.
-- 🐳 **Docker Hub** hosts the built image (`mayrhatte09/myimage`).
+- 🐳 **Docker Hub** hosts the built image (`smicx20/myweb-image`).
 - ☸️ **AWS EKS** runs the application in Kubernetes pods.
 - 📊 **Prometheus** and **Grafana** provide monitoring and visualization.
 
@@ -38,7 +38,7 @@ This project demonstrates a **DevOps pipeline** integrating **Jenkins**, **Docke
 ## ⚙️ Prerequisites
 - ✅ AWS Account with required permissions (EC2, EKS, IAM).
 - ✅ Docker Hub account: `mayrhatte09`.
-- ✅ GitHub repository: [myweb](https://github.com/Mayurhatte09/myweb.git).
+- ✅ GitHub repository: [myweb](https://github.com/sm-simplifies/myweb.git).
 - ✅ Local setup or EC2 instance with AWS CLI and kubectl installed.
 
 ---
@@ -140,7 +140,7 @@ eksctl create cluster \
 
 Then configure:
 ```bash
-aws eks update-kubeconfig --region ap-southeast-1 --name moster-node
+aws eks update-kubeconfig --region ap-southeast-1 --name master-node
 kubectl get nodes
 ```
 
@@ -162,11 +162,11 @@ pipeline {
   agent any
   tools { maven "Apache Maven 3.8.4" }
   environment {
-    DOCKER_HUB_USER = 'mayrhatte09'
-    IMAGE_NAME = 'myimage'
+    DOCKER_HUB_USER = 'smicx20'
+    IMAGE_NAME = 'myweb-image'
   }
   stages {
-    stage('Git Checkout') { steps { git url: 'https://github.com/Mayurhatte09/myweb.git', branch: 'main' } }
+    stage('Git Checkout') { steps { git url: 'https://github.com/sm-simplifies/myweb.git', branch: 'master' } }
     stage('Maven Build') { steps { sh 'mvn clean package' } }
     stage('Docker Build') { steps { sh 'docker build -t ${IMAGE_NAME}:v${BUILD_NUMBER} .' } }
     stage('Docker Push') {
@@ -183,11 +183,8 @@ pipeline {
     stage('Deploy to K8s') {
       steps {
         sh '''
-          aws eks update-kubeconfig --region ap-southeast-1 --name moster-node
-          sed -i "s|${DOCKER_HUB_USER}/${IMAGE_NAME}:v[0-9]*|${DOCKER_HUB_USER}/${IMAGE_NAME}:v${BUILD_NUMBER}|g" deployments.yaml
+          sed -i "s|${DOCKER_HUB_USER}/${IMAGE_NAME}:v*|${DOCKER_HUB_USER}/${IMAGE_NAME}:v${BUILD_NUMBER}|g" deployments.yaml
           kubectl apply -f deployments.yaml
-          kubectl rollout restart deployment mywebdeployment
-          kubectl get pods -o wide
         '''
       }
     }
@@ -225,54 +222,17 @@ pipeline {
 ---
 
 ## 📁 Appendix: Files
+
 ### deployments.yaml
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: mywebdeployment
-  labels:
-    app: myweb
-spec:
-  replicas: 4
-  selector:
-    matchLabels:
-      app: myweb
-  template:
-    metadata:
-      labels:
-        app: myweb
-    spec:
-      containers:
-      - name: myweb
-        image: mayrhatte09/myimage:v1
-        ports:
-        - containerPort: 8080
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: myweb-service
-spec:
-  selector:
-    app: myweb
-  ports:
-    - port: 8080
-      targetPort: 8080
-  type: NodePort
-```
 
 ### Dockerfile
-```dockerfile
-FROM tomcat:9.0.109
-COPY target/myweb*.war /usr/local/tomcat/webapps/myweb.war
-```
 
 ---
 
 ## 👨‍💻 Author
 **Swapnil Mali** — AWS & DevOps Engineer  
 💡 *"Knowledge should spread!"* 💪
+
 
 
 
