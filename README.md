@@ -203,9 +203,6 @@ This project is open source and available under the [MIT License](LICENSE).
 <!-- Start author box -->
 <table align="center" width="100%">
     <tr>
-        <td align="center" valign="middle" width="30%">
-            <img src="https://github.com/swapnilmali101/swapnilmali101/blob/master/assets/swapnilmali-profile-pic.png" alt="Swapnil Mali" width="150" style="border-radius: 50%; max-width="100%;">
-        </td>
         <td align="left" valign="top" width="70%">
             <h2>SWAPNIL MALI.</h2>
             <p>
