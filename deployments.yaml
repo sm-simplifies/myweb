@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: java-blog-site
-        image: swapnilmali101/java-blog-site-image:v
+        image: your-username/java-blog-site-image:v
         ports:
         - containerPort: 8087
 ---
