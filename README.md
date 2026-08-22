@@ -1,7 +1,7 @@
 <a id="top"></a>
-# 🚀 AWS EKS + Jenkins CI/CD — Project With Workflow Execution.
+# 🚀 Jenkins CI/CD + AWS EKS - Project With Workflow Execution.
 
-> **Repository:** [java-blog-site-cicd-eks-project](https://github.com/devops-swapnil/java-blog-site-cicd-eks-project.git)
+> **Repository:** [java-blog-site-cicd-eks-project](https://github.com/swapnilm87/java-blog-site-cicd-eks-project.git)
 
 ---
 
@@ -29,7 +29,7 @@ This project demonstrates a **DevOps pipeline** integrating **Jenkins**, **Docke
 <a id="overview"></a>
 ## 🧭 Overview
 - 🔁 **Jenkins** automates: Code → Build → Dockerize → Push → Deploy.
-- 🐳 **Docker Hub** hosts the built image (`devops-swapnil/java-blog-site-image`).
+- 🐳 **Docker Hub** hosts the built image (`your-username/java-blog-site-image`).
 - ☸️ **AWS EKS** runs the application in Kubernetes pods.
 - 📊 **Prometheus** and **Grafana** provide monitoring and visualization.
 
@@ -38,8 +38,8 @@ This project demonstrates a **DevOps pipeline** integrating **Jenkins**, **Docke
 <a id="prerequisites"></a>
 ## ⚙️ Prerequisites
 - ✅ AWS Account with required permissions (EC2, EKS, IAM).
-- ✅ Docker Hub account: `devops-swapnil`.
-- ✅ GitHub repository: [java-blog-site-cicd-eks-project](https://github.com/devops-swapnil/java-blog-site-cicd-eks-project.git).
+- ✅ Docker Hub account: `your-username`.
+- ✅ GitHub repository: [java-blog-site-cicd-eks-project](https://github.com/swapnilm87/java-blog-site-cicd-eks-project.git).
 - ✅ Local setup or EC2 instance with AWS CLI and kubectl installed.
 
 ---
@@ -206,7 +206,7 @@ This project is open source and available under the [MIT License](LICENSE).
         <td align="left" valign="top" width="70%">
             <h2>SWAPNIL MALI.</h2>
             <p>
-                <a href="https://github.com/devops-swapnil" target="_blank" align="center">
+                <a href="https://github.com/swapnilm87" target="_blank" align="center">
                    <img src="https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge&logo=github&logoColor=yellow" alt="GitHub Profile">
                 </a>
             </p>
